@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #000; /* Fond noir */
-    color: #fff; /* Texte blanc */
+    background-color: #000; 
+    color: #fff; 
 }
 
 header {
@@ -12,7 +12,7 @@ header {
 
 header img {
     max-width: 100px;
-    border-radius: 50%; /* Optionnel, pour un logo rond */
+    border-radius: 50%; /* logo rond */
 }
 
 h1 {
