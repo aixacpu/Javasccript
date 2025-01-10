@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Présences - CFITECH</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="debut.js"></script>
+</head>
+<body>
+    <header>
+        <img src="images.png" alt="Logo CFITECH" style="width: 150px; display: block; margin: 0 auto;">
+        <h1>Gestion des Présences - CFITECH</h1>
+    </header> 
+    
+    <section class="legend">
+        <div>
+            <p><strong>Légende :</strong></p>
+            <ul>
+                <li><span style="color: green;">✔</span> Présence </li>
+                <li><span style="color: red;">✘</span> Absence</li>
+            </ul>
+        </div>
+        <div>
+            <p><strong>Statistiques :</strong></p>
+            <ul>
+                <li>Total Présents : <span id="total-presents">0</span></li>
+                <li>Total Absents : <span id="total-absents">0</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <div>
+        <input type="text" id="nom" placeholder="Nom du stagiaire">
+        <button onclick="ajouterStagiaire()">Ajouter Stagiaire</button>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Nom</th>
+                <th>Lundi</th>
+                <th>Mardi</th>
+                <th>Mercredi</th>
+                <th>Jeudi</th>
+                <th>Vendredi</th>
+            </tr>
+        </thead>
+        <tbody id="stagiaires">
+            <!-- Exemple d'une ligne -->
+            <tr>
+                <td>1</td>
+                <td>Aicha Jerrari</td>
+                <td>
+                    <select onchange="mettreAJourStatistiques()">
+                        <option value=""> </option>
+                        <option value="✔">✔ (Présence)</option>
+                        <option value="✘">✘ (Absence)</option>
+                    </select>
+                </td>
+                <td>
+                    <select onchange="mettreAJourStatistiques()">
+                        <option value=""> </option>
+                        <option value="✔">✔ (Présence)</option>
+                        <option value="✘">✘ (Absence)</option>
+                    </select>
+                </td>
+                <td>
+                    <select onchange="mettreAJourStatistiques()">
+                        <option value=""> </option>
+                        <option value="✔">✔ (Présence)</option>
+                        <option value="✘">✘ (Absence)</option>
+                    </select>
+                </td>
+                <td>
+                    <select onchange="mettreAJourStatistiques()">
+                        <option value=""> </option>
+                        <option value="✔">✔ (Présence)</option>
+                        <option value="✘">✘ (Absence)</option>
+                    </select>
+                </td>
+                <td>
+                    <select onchange="mettreAJourStatistiques()">
+                        <option value=""> </option>
+                        <option value="✔">✔ (Présence)</option>
+                        <option value="✘">✘ (Absence)</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

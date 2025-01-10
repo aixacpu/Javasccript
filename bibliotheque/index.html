@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bibliotheque/style.css">
+    <script src="/bibliotheque/script.js"> </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Library System</h1>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title">
+        </div>
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author">
+        </div>
+        <div class="form-group">
+            <label for="isbn">ISBN:</label>
+            <input type="number" id="isbn">
+        </div>
+        <button onclick="addBook()">Add Book</button>
+        <button onclick="searchBook()">Search Book</button>
+        <div class="book-list" id="book-list"></div>
+    </div>
+</body>
+</html>
