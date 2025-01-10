@@ -1,4 +1,3 @@
-//  ajouter un stagiaire au tableau
 function ajouterStagiaire() {
     const nomStagiaire = document.getElementById("nom").value.trim();
 
@@ -11,41 +10,51 @@ function ajouterStagiaire() {
 
     const nouvelleLigne = document.createElement("tr");
 
-    // Ajoute la cellule pour le numéro
+    // ajouter numero
     const numeroCellule = document.createElement("td");
     numeroCellule.textContent = tbody.rows.length + 1;
     nouvelleLigne.appendChild(numeroCellule);
 
-    // Ajoute la cellule pour le nom
+    // table pour le nom
     const nomCellule = document.createElement("td");
     nomCellule.textContent = nomStagiaire;
     nouvelleLigne.appendChild(nomCellule);
 
-    // Ajoute les cellules pour chaque jour de la semaine
+    // tables chaque jour de la semaine
     const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
     jours.forEach(() => {
         const jourCellule = document.createElement("td");
         jourCellule.textContent = ""; // Par défaut, la cellule est vide
 
-        // ajoute un écouteur d'événement pour gérer les clics
         jourCellule.addEventListener("click", function () {
             if (jourCellule.textContent === "") {
-                jourCellule.textContent = "✔"; // Marque comme présent
+                jourCellule.textContent = "✔";
                 jourCellule.style.color = "green";
             } else if (jourCellule.textContent === "✔") {
-                jourCellule.textContent = "✘"; // Marque comme absent
+                jourCellule.textContent = "✘";
                 jourCellule.style.color = "red";
             } else {
-                jourCellule.textContent = ""; // Vide la cellule
+                jourCellule.textContent = "";
                 jourCellule.style.color = "black";
             }
-
-            // met a jour les statistiques après chaque clic
             mettreAJourStatistiques();
         });
 
         nouvelleLigne.appendChild(jourCellule);
     });
+
+    //  bouton de suppression
+    const supprimerCellule = document.createElement("td");
+    const boutonSupprimer = document.createElement("button");
+    boutonSupprimer.textContent = "Supprimer";
+    boutonSupprimer.classList.add("btn-supprimer");
+    boutonSupprimer.addEventListener("click", function () {
+        tbody.removeChild(nouvelleLigne);
+        mettreAJourStatistiques();
+        mettreAJourNumeros(); // Met à jour les numéros des stagiaires
+    });
+    supprimerCellule.appendChild(boutonSupprimer);
+    nouvelleLigne.appendChild(supprimerCellule);
 
     tbody.appendChild(nouvelleLigne);
 
@@ -53,7 +62,19 @@ function ajouterStagiaire() {
     mettreAJourStatistiques();
 }
 
-// Fonction pour mettre à jour les statistiques
+// fonction  met à jour les numéros après suppression
+function mettreAJourNumeros() {
+    const tbody = document.getElementById("stagiaires");
+    const rows = tbody.getElementsByTagName("tr");
+    let numero = 1;
+
+    for (const row of rows) {
+        const cells = row.getElementsByTagName("td");
+        cells[0].textContent = numero++; // Met à jour le numéro (1ère cellule de chaque ligne)
+    }
+}
+
+// fonction pour mettre à jour les statistiques
 function mettreAJourStatistiques() {
     const tbody = document.getElementById("stagiaires");
     const rows = tbody.getElementsByTagName("tr");
@@ -66,7 +87,7 @@ function mettreAJourStatistiques() {
         const cells = row.getElementsByTagName("td");
 
         // parcourt uniquement les cellules des jours (3e colonne et suivantes)
-        for (let i = 2; i < cells.length; i++) {
+        for (let i = 2; i < cells.length - 1; i++) {
             if (cells[i].textContent === "✔") {
                 totalPresents++;
             } else if (cells[i].textContent === "✘") {
@@ -75,7 +96,8 @@ function mettreAJourStatistiques() {
         }
     }
 
-    // met à jour les statistiques affichées
     document.getElementById("total-presents").textContent = totalPresents;
     document.getElementById("total-absents").textContent = totalAbsents;
 }
+
+    

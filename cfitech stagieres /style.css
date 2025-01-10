@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     background-color: #000; 
-    color: #fff; 
+    color: #fff;
 }
 
 header {
@@ -48,6 +48,22 @@ button:hover {
     color: #fff;
     border-radius: 5px;
 }
+.btn-supprimer {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.btn-supprimer:hover {
+    background-color: darkred;
+}
+
+
+
+
 
 table {
     width: 100%;
